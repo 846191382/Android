@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        key {
+            storeFile file('C:\\Users\\Administrator\\.android\\keystore.jks')
+            storePassword '123456'
+            keyAlias '123456'
+            keyPassword '123456'
+            sourceSets{
+                main{
+                    jniLibs.srcDirs=['libs']
+                }
+            }
+        }
+    }
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    packagingOptions {
+        exclude 'assets/location_map_gps_locked.png'
+        exclude 'assets/location_map_gps_3d.png'
+    }
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 24
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.zxy.android:tiny:0.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation files('libs\\Amap_2DMap_V6.0.0_20191106.jar')
+    implementation files('libs\\AMap_Search_V7.7.0_20201027.jar')
+    implementation files('libs\\Android_Map3D_SDK_V7.6.0_20200819.jar')
+    implementation files('D:\\MyApplication59\\app\\libs\\Amap_2DMap_V6.0.0_20191106.jar')
+    implementation files('libs\\AMap_Location_V5.2.0_20200915.jar')
+    implementation files('libs\\commons-beanutils-1.8.4.jar')
+    implementation files('libs\\commons-collections-3.1.jar')
+    implementation files('libs\\commons-lang-2.5.jar')
+    implementation files('libs\\commons-logging.jar')
+    implementation files('libs\\ezmorph-1.0.3.jar')
+    implementation files('libs\\json-lib-2.1-jdk15.jar')
+    implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
+    implementation 'com.google.zxing:core:3.4.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.journeyapps:zxing-android-embedded:4.0.0'
+}
